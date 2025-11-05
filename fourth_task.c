@@ -19,8 +19,29 @@ Don't forget to release the memory at the end.
 #include <string.h>
 #include <stdlib.h>
 
-int main(){
+char *remover(char* original, int first, int second){
+  int len = strlen(original);
+  char* sho = (char*)malloc(sizeof(char)*(len-(second-first)+1));
+  int j = 0;
+  for (int i = 0; i < len; i++){
+    if ((i < first)|| (i >= second)){
+      sho[i + j] = original[i];
+    }
+    else{
+      j--;
+    }
+  }
+  sho[(len-second+first)] = '\0';
+  return sho;
 
+}
+
+
+int main(){
+  char string[101] = "idont know what to write";
+  char *news = remover(string, 5, 10);
+  printf("%s", news);
+  free(news);
 
   return 0;
 }
