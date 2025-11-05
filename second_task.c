@@ -56,8 +56,14 @@ char *copystring(char const *str)
     return newstr;
 }
 
-___ stringcat(___, ____)
+char* stringcat(char* first, char* second)
 {
+    int len1 = strlen(first);
+    int len2 = strlen(second);
+    char* comb = (char*)malloc((sizeof(char)*len1*len2));
+    strcpy(comb, first);
+    strcpy(comb+len1, second);
+    return comb;
 }
 
 int main()
